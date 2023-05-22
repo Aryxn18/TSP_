@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Code for TSP</title>
+</head>
+<body>
+    <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">itertools</span>
+
+cities <span style="color: #333333">=</span> <span style="color: #007020">int</span> ( <span style="color: #007020">input</span> (<span style="background-color: #fff0f0">&quot; Enter the number of cities : &quot;</span>))
+
+data <span style="color: #333333">=</span> {}
+<span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span> (<span style="color: #0000DD; font-weight: bold">1</span> , cities <span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>):
+    <span style="color: #008800; font-weight: bold">for</span> j <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span> (<span style="color: #0000DD; font-weight: bold">1</span> , cities <span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>):
+        <span style="color: #008800; font-weight: bold">if</span> i <span style="color: #333333">!=</span> j:
+            city1 <span style="color: #333333">=</span> <span style="color: #007020">input</span> (f<span style="background-color: #fff0f0">&quot; Enter the name of city {i}: &quot;</span>)
+            city2 <span style="color: #333333">=</span> <span style="color: #007020">input</span> (f<span style="background-color: #fff0f0">&quot; Enter the name of city {j}: &quot;</span>)
+            distance <span style="color: #333333">=</span> <span style="color: #007020">float</span> ( <span style="color: #007020">input</span> (f<span style="background-color: #fff0f0">&quot; Enter the distance between { city1 } and { city2 }: &quot;</span>))
+            data [(i , j )] <span style="color: #333333">=</span> distance
+combinations <span style="color: #333333">=</span> <span style="color: #007020">list</span> ( itertools <span style="color: #333333">.</span> permutations ( <span style="color: #007020">range</span> (<span style="color: #0000DD; font-weight: bold">1</span> , cities <span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>)))
+shortest_distance <span style="color: #333333">=</span> <span style="color: #007020">float</span> ( <span style="background-color: #fff0f0">&#39;inf&#39;</span>)
+shortest_tour <span style="color: #333333">=</span> <span style="color: #007020">None</span>
+<span style="color: #008800; font-weight: bold">for</span> tour <span style="color: #000000; font-weight: bold">in</span> combinations :
+    distance <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>
+    <span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span> ( cities <span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>):
+        distance <span style="color: #333333">+=</span> data [( tour [i], tour [i<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>])]
+    distance <span style="color: #333333">+=</span> data [( tour [<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>], tour [<span style="color: #0000DD; font-weight: bold">0</span>])]
+    <span style="color: #008800; font-weight: bold">if</span> distance <span style="color: #333333">&lt;</span> shortest_distance:
+        shortest_distance <span style="color: #333333">=</span> distance
+        shortest_tour <span style="color: #333333">=</span> tour
+
+<span style="color: #008800; font-weight: bold">print</span> (<span style="background-color: #fff0f0">&quot; Shortest tour :&quot;</span>, end <span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot; &quot;</span>)
+<span style="color: #008800; font-weight: bold">for</span> city <span style="color: #000000; font-weight: bold">in</span> shortest_tour :
+    <span style="color: #008800; font-weight: bold">print</span> (f<span style="background-color: #fff0f0">&quot; City { city }&quot;</span>, end <span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot; -&gt; &quot;</span>)
+<span style="color: #008800; font-weight: bold">print</span> (f<span style="background-color: #fff0f0">&quot; City { shortest_tour [0]}&quot;</span>)
+<span style="color: #008800; font-weight: bold">print</span> (<span style="background-color: #fff0f0">&quot; Shortest distance :&quot;</span>, shortest_distance )
+</pre></td></tr></table></div>
+
+</body>
+</html>
